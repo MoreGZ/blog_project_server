@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "node ./init/init.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "busboy": "^0.2.14",
+    "co": "^4.6.0",
+    "debug": "^2.6.0",
+    "ejs": "^2.5.5",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-logger": "^3.2.0",
+    "koa-mysql-session": "0.0.2",
+    "koa-router": "^7.0.1",
+    "koa-send": "^3.2.0",
+    "koa-session-minimal": "^3.0.3",
+    "koa-static": "^3.0.0",
+    "koa-views": "^5.2.0",
+    "mysql": "^2.12.0",
+    "validator": "^6.2.0",
+    "whatwg-fetch": "^2.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "supertest": "^3.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,89 @@
+CREATE TABLE   IF NOT EXISTS  `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE   IF NOT EXISTS  `info` (
+  `info_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
+  `sex` varchar(3) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `github` varchar(255) DEFAULT NULL,
+  `blog` varchar(255) DEFAULT NULL,
+  `major` varchar(50) DEFAULT NULL,
+  `education` varchar(50) DEFAULT NULL,
+  `college` varchar(50) DEFAULT NULL,
+  `university` varchar(50) DEFAULT NULL,
+  `gpa` float(5) DEFAULT NULL,
+  `introduction` TEXT(21845) DEFAULT NULL,
+  `zhihu` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`info_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE info
+ADD CONSTRAINT info_user_cons
+FOREIGN KEY (user_id)
+REFERENCES  user(user_id);
+
+CREATE TABLE   IF NOT EXISTS  `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `s_date` varchar(50) DEFAULT NULL,
+  `e_date` varchar(50) DEFAULT NULL,
+  `introduction` varchar(65535) DEFAULT NULL,
+  PRIMARY KEY (`project_id`),
+  FOREIGN KEY ('user_id') REFERENCES user('user_id'),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER table project ADD INDEX project_user_index(user_id);
+ALTER table project ADD INDEX project_userandtitle_index(user_id,title);
+
+CREATE TABLE   IF NOT EXISTS  `classification` (
+  `class_name` int(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`class_name`),
+  FOREIGN KEY ('user_id') REFERENCES user('user_id'),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE   IF NOT EXISTS  `article` (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `create_time` varchar(50) DEFAULT NULL,
+  `update_time` varchar(50) DEFAULT NULL,
+  `content` varchar(65535) DEFAULT NULL,
+  `classification` varchar(20) DEFAULT NULL,
+  `cover_img` varchar(65535) DEFAULT NULL,
+  PRIMARY KEY (`article_id`),
+  FOREIGN KEY ('user_id') REFERENCES user('user_id'),
+  FOREIGN KEY ('classification') REFERENCES classification('class_name'),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER table article ADD INDEX article_user_index(user_id);
+ALTER table article ADD INDEX article_userandarticle_index(user_id,article_id);
+
+CREATE TABLE   IF NOT EXISTS  `comment` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `article_id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `blog` varchar(255) DEFAULT NULL,
+  `body` varchar(65535) DEFAULT NULL,
+  PRIMARY KEY (`comment_id`),
+  FOREIGN KEY ('article_id') REFERENCES user('article_id'),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER table comment ADD INDEX comment_user_index(article_id);
+
+
+INSERT INTO `user` set username='', password='george';
+
+ALTER table info ADD INDEX info_user_index(user_id);
+
+INSERT INTO `user` set username='george', password='more';
+INSERT INTO `info` set user_id='1';

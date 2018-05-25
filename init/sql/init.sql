@@ -51,13 +51,3 @@ CREATE TABLE   IF NOT EXISTS  `article` (
   `cover_img` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`article_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE   IF NOT EXISTS  `comment` (
-  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `blog` varchar(255) DEFAULT NULL,
-  `body` TEXT(65535) DEFAULT NULL,
-  PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;

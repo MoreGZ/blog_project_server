@@ -31,7 +31,9 @@ app.use(koaSession({
 app.use(koaLogger());
 
 // 配置ctx.body解析中间件
-app.use(bodyParser());
+app.use(bodyParser({
+    enableTypes:['json', 'form', 'text']
+}))
 
 // 配置静态资源加载中间件
 app.use(koaStatic(

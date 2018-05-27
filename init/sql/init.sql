@@ -34,10 +34,11 @@ CREATE TABLE   IF NOT EXISTS  `project` (
   PRIMARY KEY (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE   IF NOT EXISTS  `classification` (
-  `class_name` int(50) NOT NULL,
+CREATE TABLE   IF NOT EXISTS  `class` (
+  `class_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`class_name`)
+  `class_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`class_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE   IF NOT EXISTS  `article` (

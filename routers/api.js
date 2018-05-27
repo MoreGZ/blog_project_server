@@ -9,6 +9,7 @@ routers
     .post("/checkLog",apiController.checkLog)
     .post("/editInformation",apiController.editInformation)
     .post("/register",apiController.register)
+    .get("/getInformationById",apiController.getInformationById)
 
     .get("/getArticlesByClassify",apiController.getArticlesByClassify)
     .get("/getArticleById",apiController.getArticleById)
